@@ -34,7 +34,6 @@ def PieCountbySeverity(request):
         rows = cursor.fetchall()
 
     if rows:
-        # Construct the dictionary with severity level as keys and count as values
         data = {severity: count for severity, count in rows}
     else:
         data = {}
