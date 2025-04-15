@@ -21,7 +21,8 @@ class HomePageView(ListView):
     model = Locations
     context_object_name = 'home'
     template_name = "home.html"
-    
+
+#chart
 class ChartView(ListView):
     template_name = 'chart.html'
 
@@ -214,7 +215,7 @@ def firestation_list(request):
     firestations = FireStation.objects.all()
     return render(request, 'station_list.html', {'object_list': firestations})
 
-
+#firestation 
 
 class firestationListView(ListView):
     model = FireStation
@@ -252,7 +253,7 @@ class firestationDeleteView(DeleteView):
     success_url = reverse_lazy('station-list')
     
 
-
+#fireincident
 class IncidentListView(ListView):
     model = Incident
     template_name = 'fire_incident_list.html'
@@ -287,7 +288,9 @@ class IncidentDeleteView(DeleteView):
     model = Incident
     template_name= 'fire_incident_del.html'
     success_url = reverse_lazy('fire-incident-list')
-    
+
+
+#location
 class LocationListView(ListView):
     model = Locations
     template_name = 'location_list.html'
@@ -323,6 +326,8 @@ class LocationDeleteView(DeleteView):
     template_name= 'location_del.html'
     success_url = reverse_lazy('location-list')
 
+
+#weather
 class ConditionListView(ListView):
     model = WeatherConditions
     context_object_name = 'object_list'
@@ -359,7 +364,7 @@ class ConditionDeleteView(DeleteView):
     template_name = 'weather_del.html'
     success_url = reverse_lazy('weather-list')
     
-    
+#firetrucks   
     
 class FiretruckListView(ListView):
     model = FireTruck
@@ -397,8 +402,7 @@ class FiretruckDeleteView(DeleteView):
     success_url = reverse_lazy('firetruck-list')
     
     
-
-
+#firefighters
 class FirefightersListView(ListView):
     model = Firefighters
     context_object_name = 'firefighters'
