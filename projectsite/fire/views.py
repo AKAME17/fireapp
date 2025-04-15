@@ -212,7 +212,7 @@ def fire_incident_map(request):
 
 def firestation_list(request):
     firestations = FireStation.objects.all()
-    return render(request, 'stationlist.html', {'object_list': firestations})
+    return render(request, 'station_list.html', {'object_list': firestations})
 
 
 
@@ -275,18 +275,18 @@ class IncidentCreateView(CreateView):
     model = Incident
     form_class =  Incident_Form
     template_name= 'fire_incident_add.html'
-    success_url = reverse_lazy('incident-list')
+    success_url = reverse_lazy('fire-incident-list')
     
 class IncidentUpdateView(UpdateView):
     model = Incident
     form_class =  Incident_Form
     template_name= 'fire_incident_edit.html'
-    success_url = reverse_lazy('incident-list')
+    success_url = reverse_lazy('fire-incident-list')
     
 class IncidentDeleteView(DeleteView):
     model = Incident
     template_name= 'fire_incident_del.html'
-    success_url = reverse_lazy('incident-list')
+    success_url = reverse_lazy('fire-incident-list')
     
 class LocationListView(ListView):
     model = Locations
@@ -310,18 +310,18 @@ class LocationCreateView(CreateView):
     model = Locations
     form_class = Loc_Form
     template_name= 'location_add.html'
-    success_url = reverse_lazy('loc-list')
+    success_url = reverse_lazy('location-list')
     
 class LocationUpdateView(UpdateView):
     model = Locations
     form_class = Loc_Form
     template_name= 'location_edit.html'
-    success_url = reverse_lazy('loc-list')
+    success_url = reverse_lazy('location-list')
     
 class LocationDeleteView(DeleteView):
     model = Locations
     template_name= 'location_del.html'
-    success_url = reverse_lazy('loc-list')
+    success_url = reverse_lazy('location-list')
 
 class ConditionListView(ListView):
     model = WeatherConditions
@@ -383,18 +383,18 @@ class FiretruckCreateView(CreateView):
     model = FireTruck
     form_class = Firetruckform
     template_name = 'firetruck_add.html'
-    success_url = reverse_lazy('fireTruck-list')
+    success_url = reverse_lazy('firetruck-list')
 
 class FiretruckUpdateView(UpdateView):
     model = FireTruck
     form_class = Firetruckform
     template_name = 'firetruck_edit.html'
-    success_url = reverse_lazy('fireTruck-list')
+    success_url = reverse_lazy('firetruck-list')
 
 class FiretruckDeleteView(DeleteView):
     model =  FireTruck
     template_name = 'firetruck_del.html'
-    success_url = reverse_lazy('fireTruck-list')
+    success_url = reverse_lazy('firetruck-list')
     
     
 
