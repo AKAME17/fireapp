@@ -6,7 +6,7 @@ from fire.forms import Loc_Form, Incident_Form, FireStationForm, Weather_conditi
 from django.db.models.query import QuerySet
 from django.db.models import Q
 
-
+from django.contrib import messages
 from django.views.generic.list import ListView
 from django.db import connection
 from django.http import JsonResponse
@@ -219,9 +219,11 @@ def firestation_list(request):
 
 class firestationListView(ListView):
     model = FireStation
+    fields = "__all__"
     template_name = 'station_list.html'
     context_object_name = 'object_list'
     paginate_by = 10
+    success_url = reverse_lazy('station-list')
 
     def get_queryset(self, *args, **kwargs):
         qs = super().get_queryset(*args, **kwargs)
@@ -235,11 +237,23 @@ class firestationListView(ListView):
             )
         return qs
     
+    def form_valif (self, form):
+        station_name = form.instance.station_name
+        messages.sucess(self.request, f'{station_name} has been successfully updated.')
+
+        return super() .form_valid(form)    
 class firestationCreateView(CreateView):
     model = FireStation
+    slug_field = "__all__"
+    context_object_name = "station"
     form_class = FireStationForm
     template_name= 'station_add.html'
     success_url = reverse_lazy('station-list')
+
+    def form_valid(self, form):
+        FireStation = form.instance.FireStation
+        messages.success(self.request, f'{FireStation} has been successfully updated.')
+        return super () .form_valid(form)
     
 class firestationUpdateView(UpdateView):
     model = FireStation
