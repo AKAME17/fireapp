@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from fire.models import Locations, Incident, FireStation, WeatherConditions, FireTruck, Firefighters
+from fire.models import Locations, Incident, FireStation, WeatherConditions, FireTruck, Firefighters, Boat
 from fire.forms import Loc_Form, Incident_Form, FireStationForm, Weather_condition, Firetruckform, FirefightersForm
 from django.db.models.query import QuerySet
 from django.db.models import Q
